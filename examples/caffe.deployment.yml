@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: "caffe-server"
+spec: 
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "caffe"
+    spec:
+      containers: 
+      - name: "caffe-server-gpu"
+        image: "beevamariorodriguez/nvidia_caffe_server:nvidia"
+        resources: 
+          limits: 
+            alpha.kubernetes.io/nvidia-gpu: 1
+        volumeMounts:
+        - mountPath: /usr/local/nvidia
+          name: nvidia
+      volumes:
+      - hostPath:
+          path: /usr/local/nvidia
+        name: nvidia
+

@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: "simple-gpu-test"
+spec: 
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "simplegputest"
+    spec:
+      containers: 
+      - name: "nvidia-smi-gpu"
+        image: "nvidia/cuda:8.0-cudnn5-runtime"
+        resources: 
+          limits: 
+            alpha.kubernetes.io/nvidia-gpu: 3
+        volumeMounts:
+        - mountPath: /usr/local/nvidia
+          name: nvidia
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "while true; do nvidia-smi; sleep 5; done;" ]
+      volumes:
+      - hostPath:
+          path: /usr/local/nvidia
+        name: nvidia
+
