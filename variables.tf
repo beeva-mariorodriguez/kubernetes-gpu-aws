@@ -29,8 +29,3 @@ variable "k8s_version" {
   type    = "string"
   default = "1.8.0"
 }
-
-variable "k8s_node_size" {
-  type    = "string"
-  default = "t2.medium"
-}

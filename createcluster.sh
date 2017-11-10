@@ -12,7 +12,7 @@ kops create cluster \
     --zones "$(terraform output -json aws_azs | jq -r '.value|join(",")')" \
     --kubernetes-version "$(terraform output k8s_version)" \
     --image "$(terraform output coreos_image_location)" \
-    --node-size "$(terraform output k8s_node_size)" \
+    --node-size "t2.medium" \
     --node-volume-size 30 \
     --network-cidr "$(terraform output aws_cidr_block)" \
     --dns-zone "$(terraform output aws_dns_zone_id)" \

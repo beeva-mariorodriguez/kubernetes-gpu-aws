@@ -34,10 +34,6 @@ output "k8s_version" {
   value = "${var.k8s_version}"
 }
 
-output "k8s_node_size" {
-  value = "${var.k8s_node_size}"
-}
-
 output "gpu_image_name" {
   value = "${data.aws_ami.gpu.name}"
 }
