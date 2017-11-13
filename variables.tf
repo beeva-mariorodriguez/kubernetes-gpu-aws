@@ -19,13 +19,3 @@ variable "domain_name" {
 variable "kops_state_store" {
   type = "string"
 }
-
-variable "k8s_networking" {
-  type    = "string"
-  default = "calico"
-}
-
-variable "k8s_version" {
-  type    = "string"
-  default = "1.8.0"
-}

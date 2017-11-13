@@ -26,14 +26,6 @@ output "aws_region" {
   value = "${var.aws_region}"
 }
 
-output "k8s_networking" {
-  value = "${var.k8s_networking}"
-}
-
-output "k8s_version" {
-  value = "${var.k8s_version}"
-}
-
 output "gpu_image_name" {
   value = "${data.aws_ami.gpu.name}"
 }
