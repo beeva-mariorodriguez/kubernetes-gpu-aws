@@ -49,3 +49,7 @@ output "coreos_image_location" {
 output "coreos_image_id" {
   value = "${data.aws_ami.coreos.id}"
 }
+
+output "nfs_sg" {
+  value = "${aws_security_group.nfs.id}"
+}

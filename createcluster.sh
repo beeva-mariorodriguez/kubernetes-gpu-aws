@@ -22,5 +22,7 @@ kops create cluster \
     --api-loadbalancer-type public \
     --topology public \
     --ssh-public-key ssh/id_rsa.pub \
-    --dns private
+    --dns private \
+    --node-security-groups "$(terraform output nfs_sg)" \
+    --master-security-groups "$(terraform output nfs_sg)"
 
