@@ -10,7 +10,7 @@ kops create cluster \
     --name "$(terraform output cluster_name)" \
     --state "$(terraform output kops_state_store)" \
     --zones "$(terraform output -json aws_azs | jq -r '.value|join(",")')" \
-    --kubernetes-version "1.8.0" \
+    --kubernetes-version "1.8.3" \
     --image "$(terraform output coreos_image_location)" \
     --node-size "t2.medium" \
     --network-cidr "$(terraform output aws_cidr_block)" \
