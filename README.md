@@ -10,7 +10,7 @@ experiment: build a kubernetes cluster in AWS with nvidia GPU support
 ## requirements
 * [packer](https://www.packer.io/) 1.1.2
 * [terraform](https://www.terraform.io/) 0.11.1
-* [kubectl](https://github.com/kubernetes/kubectl) 1.7.3
+* [kubectl](https://github.com/kubernetes/kubectl) 1.8.3
 * [Kubernetes Operations (kops)](https://github.com/kubernetes/kops) 1.8.x
 * [AWS CLI](https://aws.amazon.com/cli/) 1.11.x
 * GNU make, jq, bash
