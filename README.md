@@ -48,7 +48,32 @@ experiment: build a kubernetes cluster in AWS with nvidia GPU support
     ./createcluster.sh
     ```
 
-6. now you need to add the public api load balancer's IP to your /etc/hosts (remember, the dns zone is private)
+6. [optional] edit the nodes instancegroup to use an image with nvidia drivers (``602636675831/beevalabs-docker-nvidia-jessie-0.6``)
+    ```bash
+    kops edit ig nodes --name cluster.k8s.beevalabs
+    ```
+    ```yaml
+    spec:
+      image: 602636675831/beevalabs-docker-nvidia-jessie-0.6
+    ```
+
+7. [optional] edit the cluster to enable the accelerators featuregate
+    ```bash
+    kops edit cluster --name cluster.k8s.beevalabs
+    ```
+    ```yaml
+    spec:
+      kubelet:
+        featureGates:
+          Accelerators: "true"
+    ```
+
+8. finish the k8s deploy
+    ```bash
+    kops update cluster  $(terraform output cluster_name) --state $(terraform output kops_state_store)  --yes
+    ```
+
+9. now you need to add the public api load balancer's IP to your /etc/hosts (remember, the dns zone is private)
     1. get the LB's public dns name
         ```bash
         aws route53 list-resource-record-sets \
@@ -62,11 +87,6 @@ experiment: build a kubernetes cluster in AWS with nvidia GPU support
         echo "1.2.3.4 api.$TF_VAR_cluster_name" >> /etc/hosts
         ```
     there _must_ be a better way ...
-
-7. finish the kubernetes deploy
-    ```bash
-    kops update cluster  $(terraform output cluster_name) --state $(terraform output kops_state_store)  --yes
-    ```
 
 ## references
 * https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/
