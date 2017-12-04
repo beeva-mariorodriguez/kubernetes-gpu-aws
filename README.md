@@ -44,7 +44,7 @@ experiment: build a kubernetes cluster in AWS with nvidia GPU support
     terraform apply
     ```
 
-5. use kops to create the cluster (just state and terraform configuration)
+5. use kops to create the cluster
     ```bash
     ./createcluster.sh
     ```
@@ -69,7 +69,7 @@ experiment: build a kubernetes cluster in AWS with nvidia GPU support
           Accelerators: "true"
     ```
 
-8. finish the k8s deploy
+8. finish the kubernetes deploy
     ```bash
     kops update cluster  $(terraform output cluster_name) --state $(terraform output kops_state_store)  --yes
     ```

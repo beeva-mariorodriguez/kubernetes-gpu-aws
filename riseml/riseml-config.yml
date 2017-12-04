@@ -5,3 +5,4 @@ output:
   nfsServer: output.nfs.k8s.beevalabs
   nfsExport: /
 useRBAC: false
+nvidiaDriverDir: /usr/local/nvidia
