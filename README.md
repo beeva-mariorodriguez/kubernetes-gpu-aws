@@ -49,7 +49,7 @@ experiment: build a kubernetes cluster in AWS with nvidia GPU support
     ./createcluster.sh
     ```
 
-6. [optional] edit the nodes instancegroup to use an image with nvidia drivers (``602636675831/beevalabs-docker-nvidia-jessie-0.6``)
+6. [optional] edit the nodes instancegroup to use an image with nvidia drivers (``602636675831/beevalabs-k8s-nvidia-jessie-0.7``)
     ```bash
     kops edit ig nodes --name cluster.k8s.beevalabs
     ```
