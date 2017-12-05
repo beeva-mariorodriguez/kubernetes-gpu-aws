@@ -1,0 +1,7 @@
+data:
+  nfsServer: data.nfs.k8s.beevalabs
+  nfsExport: /
+output:
+  nfsServer: output.nfs.k8s.beevalabs
+  nfsExport: /
+useRBAC: false
