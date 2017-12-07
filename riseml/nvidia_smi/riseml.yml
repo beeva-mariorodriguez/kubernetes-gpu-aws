@@ -1,0 +1,9 @@
+project: nvidia_smi
+train:
+  image: nvidia/cuda:8.0-cudnn7-runtime
+  resources:
+    gpus: 1
+    cpus: 1
+    mem: 512
+  run: 
+  - bash -c "while [ true ] ; do /usr/local/nvidia/bin/nvidia-smi; sleep 5; done"

@@ -1,0 +1,13 @@
+project: tensorflow_classify_image
+train:
+  image: tensorflow/tensorflow:1.2.0
+  install:
+    - apt-get -y update
+    - apt-get -y install git
+    - git clone https://github.com/tensorflow/models
+  resources:
+    gpus: 1
+    cpus: 1
+    mem: 512
+  run: 
+  - python models/tutorials/image/imagenet/classify_image.py
